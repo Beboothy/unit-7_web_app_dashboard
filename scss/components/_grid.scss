@@ -1,0 +1,89 @@
+/* ============================================= */
+/*              Grid System                      */
+/* ============================================= */
+
+header { grid-area: header; }
+nav { grid-area: nav; }
+.main { grid-area: main; }
+.headline { grid-area: headline; }
+.tab { grid-area: tab; }
+#alert { grid-area: alert; }
+#social h3 { grid-area: socialHead }
+#facebook { grid-area: facebook; }
+#instagram { grid-area: instagram; }
+#twitter { grid-area: twitter; }
+
+.main,
+.main-header,
+.grid-container,
+#social {
+  display: grid;
+}
+
+.grid-container {
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    'header'
+    'nav'
+    'main';
+}
+
+.main-header {
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    'headline tab'
+    'alert alert'
+}
+
+#social {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  'socialHead'
+  'facebook'
+  'instagram'
+  'twitter'
+}
+
+@include mq-width('tablet', min) {
+  .grid-container {
+    grid-template-columns: 55px 1fr;
+    grid-template-areas: 
+    'header header'
+    'nav main';
+  }
+
+  .main {
+    grid-template-columns: 50%;
+  }
+
+  .traffic, #social,
+  .main-header {
+    grid-column: 1 / span 2;
+  }
+
+  .new, .message, .activity, .settings {
+    grid-column: span 2;
+  }
+
+  #social {
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: .5rem;
+    grid-template-areas:
+    'socialHead socialHead socialHead'
+    'facebook instagram twitter'
+  }
+}
+
+@include mq-width('desktop', min) {
+  .daily, .new, .message {
+    grid-column: 1 / span 1;
+  }
+
+  .mobile_users, .activity, .settings {
+    grid-column: 2 / span 1;
+  }
+}
+

@@ -1,0 +1,56 @@
+$main: #7578BF;
+$secondary: #F2F2F2;
+$tertiary: #4D4C72;
+$accent: #81C98F;
+$grey: #3f4545;
+$error: #f73646;
+$success: #00d877;
+$black: black;
+$white: white;
+
+// Layout
+$spacer: 1rem;
+$max-width: 1000px;
+
+/*
+  * -----------------------------------------------
+  ? Colors classes will be handled in _colors.scss
+  * -----------------------------------------------
+*/
+$colors: (
+  "main": $main,
+  "secondary": $secondary,
+  "tertiary": $tertiary,
+  "accent": $accent,
+  "grey": $grey,
+  "error": $error,
+  "success": $success,
+  "black": $black,
+  "white": $white
+);
+
+$breakpoints: (
+  "phone": 360px,
+  "phone-wide": 480px,
+  "small-tablet": 560px,
+  "tablet": 768px,
+  "desktop": 1024px,
+  "desktop-wide": 1440px,
+  "hd": 1920px
+);
+
+$base-margin: .75rem;
+$base-padding: .75rem;
+
+$base-border-thickness: 1px;
+$base-border-radius: 20px;
+
+$font-weight-100: 100;
+$font-weight-200: 200;
+$font-weight-300: 300;
+$font-weight-400: 400;
+$font-weight-500: 500;
+$font-weight-600: 600;
+$font-weight-700: 700;
+$font-weight-800: 800;
+$font-weight-900: 900;

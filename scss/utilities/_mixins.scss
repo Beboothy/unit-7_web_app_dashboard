@@ -1,0 +1,65 @@
+@mixin base-text {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.47059;
+}
+
+// Center containers
+@mixin center($w) {
+  width: $w;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin margin-inline {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Container fix
+@mixin newContainer {
+  flex-direction: column;
+
+  h4 {
+    width: 100%;
+  }
+}
+
+// Create a flex container
+// ? @include flex($dir: column, $wrap: nowrap, $just: space-around)
+@mixin flex(
+  $disp: flex,
+  $dir: null,
+  $wrap: null,
+  $just: null) {
+  display: $disp;
+  flex-direction: $dir;
+  flex-wrap: $wrap;
+  justify-content: $just;
+}
+
+// Breakpoint calculator
+@mixin mq-width ($size, $type: max) {
+  @if map_has_key($breakpoints, $size) {
+    $size: map_get($breakpoints, $size);
+    @if $type == max {
+      $size: $size - 1px;
+    }
+    @media only screen and (#{$type}-width: $size) {
+      @content;
+    }
+  }
+}
+
+@mixin themes($map) {
+  @each $theme, $color in $map {
+    &-#{$theme} {
+      background-color: $color;
+
+      &:hover {
+        background-color: lighten($color, .2);
+      }
+    }
+  } 
+}

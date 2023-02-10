@@ -1,0 +1,233 @@
+/*
+  * ------------------------------------------------------------------
+  * These functions loop through the color palette in _variables.scss
+  * ------------------------------------------------------------------
+*/
+@each $key, $val in $colors {
+  .border-#{$key} {
+    border-width: $base-border-thickness;
+    border-style: solid;
+    border-color: $val;
+  }
+  .border-hover-#{$key} {
+    &:hover,
+    &:focus {
+      border-color: $val;
+    }
+  }
+
+  .bt-#{$key} {
+    border-top: $base-border-thickness solid $val;
+  }
+  .bt-hover-#{$key} {
+    &:hover,
+    &:focus {
+      border-top: $base-border-thickness solid $val;
+    }
+  }
+
+  .bb-#{$key} {
+    border-bottom: $base-border-thickness solid $val;
+  }
+  .bb-hover-#{$key} {
+    &:hover,
+    &:focus {
+      border-bottom: $base-border-thickness solid $val;
+    }
+  }
+
+  .bs-#{$key} {
+    border-left: $base-border-thickness solid $val;
+  }
+  .bs-hover-#{$key} {
+    &:hover,
+    &:focus {
+      border-left: $base-border-thickness solid $val;
+    }
+  }
+
+  .be-#{$key} {
+    border-right: $base-border-thickness solid $val;
+  }
+  .be-hover-#{$key} {
+    &:hover,
+    &:focus {
+      border-right: $base-border-thickness solid $val;
+    }
+  }
+
+  .bg-#{$key} {
+    background-color: $val;
+  }
+  .bg-hover-#{$key} {
+    &:hover,
+    &:focus {
+      background-color: $val;
+    }
+  }
+  .text-#{$key} {
+    color: $val;
+  }
+  .text-hover-#{$key} {
+    &:hover,
+    &:focus {
+      color: $val;
+    }
+  }
+
+  @if ($val != black and $val != white) {
+    /*
+      * Light Variations
+    */
+    @for $i from 1 through 9 {
+      .border-#{$key}-light-#{$i} {
+        border-width: $base-border-thickness;
+        border-style: solid;
+        border-color: mix(white, $val, $i * 10%);
+      }
+      .border-hover-#{$key}-light-#{$i} {
+        &:hover,
+        &:focus {
+          border-color: mix(white, $val, $i * 10%);
+        }
+      }
+
+      .bt-#{$key}-light-#{$i} {
+        border-top: $base-border-thickness solid mix(white, $val, $i * 10%);
+      }
+      .bt-hover-#{$key}-light-#{$i} {
+        &:hover,
+        &:focus {
+          border-top: $base-border-thickness solid mix(white, $val, $i * 10%);
+        }
+      }
+
+      .bb-#{$key}-light-#{$i} {
+        border-bottom: $base-border-thickness solid mix(white, $val, $i * 10%);
+      }
+      .bb-hover-#{$key}-light-#{$i} {
+        &:hover,
+        &:focus {
+          border-bottom: $base-border-thickness solid mix(white, $val, $i * 10%);
+        }
+      }
+
+      .bs-#{$key}-light-#{$i} {
+        border-left: $base-border-thickness solid mix(white, $val, $i * 10%);
+      }
+      .bs-hover-#{$key}-light-#{$i} {
+        &:hover,
+        &:focus {
+          border-left: $base-border-thickness solid mix(white, $val, $i * 10%);
+        }
+      }
+
+      .be-#{$key}-light-#{$i} {
+        border-right: $base-border-thickness solid mix(white, $val, $i * 10%);
+      }
+      .be-hover-#{$key}-light-#{$i} {
+        &:hover,
+        &:focus {
+          border-right: $base-border-thickness solid mix(white, $val, $i * 10%);
+        }
+      }
+
+      .bg-#{$key}-light-#{$i} {
+        background-color: mix(white, $val, $i * 10%);
+      }
+      .bg-hover-#{$key}-light-#{$i} {
+        &:hover,
+        &:focus {
+          background-color: mix(white, $val, $i * 10%);
+        }
+      }
+
+      .text-#{$key}-light-#{$i} {
+        color: mix(white, $val, $i * 10%);
+      }
+      .text-hover-#{$key}-light-#{$i} {
+        &:hover,
+        &:focus {
+          color: mix(white, $val, $i * 10%);
+        }
+      }
+    }
+
+    /*
+      * Dark Variations
+    */
+    @for $i from 1 through 9 {
+      .border-#{$key}-dark-#{$i} {
+        border-color: mix(black, $val, $i * 10%);
+      }
+      .border-hover-#{$key}-dark-#{$i} {
+        &:hover,
+        &:focus {
+          border-color: mix(black, $val, $i * 10%);
+        }
+      }
+
+      .bt-#{$key}-dark-#{$i} {
+        border-top: $base-border-thickness solid mix(black, $val, $i * 10%);
+      }
+      .bt-hover-#{$key}-dark-#{$i} {
+        &:hover,
+        &:focus {
+          border-top: $base-border-thickness solid mix(black, $val, $i * 10%);
+        }
+      }
+
+      .bb-#{$key}-dark-#{$i} {
+        border-bottom: $base-border-thickness solid mix(black, $val, $i * 10%);
+      }
+      .bb-hover-#{$key}-dark-#{$i} {
+        &:hover,
+        &:focus {
+          border-bottom: $base-border-thickness solid mix(black, $val, $i * 10%);
+        }
+      }
+
+      .bs-#{$key}-dark-#{$i} {
+        border-left: $base-border-thickness solid mix(black, $val, $i * 10%);
+      }
+      .bs-hover-#{$key}-dark-#{$i} {
+        &:hover,
+        &:focus {
+          border-left: $base-border-thickness solid mix(black, $val, $i * 10%);
+        }
+      }
+
+      .be-#{$key}-dark-#{$i} {
+        border-right: $base-border-thickness solid mix(black, $val, $i * 10%);
+      }
+      .be-hover-#{$key}-dark-#{$i} {
+        &:hover,
+        &:focus {
+          border-right: $base-border-thickness solid mix(black, $val, $i * 10%);
+        }
+      }
+
+      .bg-#{$key}-dark-#{$i} {
+        background-color: mix(black, $val, $i * 10%);
+      }
+      .bg-hover-#{$key}-dark-#{$i} {
+        &:hover,
+        &:focus {
+          background-color: mix(black, $val, $i * 10%);
+        }
+      }
+
+      .text-#{$key}-dark-#{$i} {
+        color: mix(black, $val, $i * 10%);
+      }
+      .text-hover-#{$key}-dark-#{$i} {
+        &:hover,
+        &:focus {
+          color: mix(black, $val, $i * 10%);
+        }
+      }
+    }
+  }
+}
+
+

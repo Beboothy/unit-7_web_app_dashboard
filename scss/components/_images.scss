@@ -1,0 +1,46 @@
+/* ============================================= */
+/*              Images                           */
+/* ============================================= */
+
+%img {
+  display: block;
+  max-width: 100%;
+}
+
+#UserAvatar {
+  @extend %img;
+  width: 65px;
+  height: 65px;
+  margin: 0 22.5px;
+  border-radius: 50%;
+}
+
+.bell {
+  width: 2rem;
+}
+
+
+
+// .img-avatar,
+// .img-frame,
+// .img-logo {
+//   @extend %img;
+// }
+
+// .img-avatar {
+//   margin-top: 10px;
+//   max-height: 100%;
+// }
+
+// .img-frame {
+//   margin-top: 10px;
+//   padding: $spacer * .75;
+//   border: 1px solid #ccc;
+// }
+
+// @include mq-width('tablet', min) {
+//   .img-logo {
+//     margin-left: initial;
+//     margin-right: initial;
+//   }
+// }

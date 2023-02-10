@@ -1,0 +1,21 @@
+// ======================================
+//  Partial Imports
+// ======================================
+
+// utilities
+@import 'utilities/variables',
+        'utilities/colors',
+        'utilities/mixins',
+        'utilities/utility-class-generator';
+
+// base
+@import 'base/normalize',
+        'base/typography';
+
+// components
+@import 'components/buttons',
+        'components/buttons',
+        'components/navigation',
+        'components/images',
+        'components/grid',
+        'components/containers'

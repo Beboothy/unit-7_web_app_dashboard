@@ -1,0 +1,29 @@
+/* ============================================= */
+/*              Buttons                          */
+/* ============================================= */
+
+%btn {
+  margin-top: $spacer;
+  width: 100%;
+  color: $white;
+  border: none;
+  padding: calc($spacer * .75) 0;
+
+  &:hover {
+    color: $white;
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: initial;
+  }
+
+  @include mq-width('tablet', min) {
+    padding: 10px 30px;
+  }
+}
+
+.btn {
+  @include themes($colors);
+  @extend %btn;
+}

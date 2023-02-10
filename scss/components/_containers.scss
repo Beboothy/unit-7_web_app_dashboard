@@ -1,0 +1,217 @@
+header {
+  @include flex($wrap: nowrap);
+  align-items: center;
+  padding: 1rem .5rem;
+  background-color: $main;
+}
+
+h1 {
+  margin-right: auto;
+}
+
+#bell {
+  @include flex($just: center);
+  align-items: center;
+  min-width: 100px;
+  border-right: 1px solid $grey;
+}
+
+.headline {
+  text-align: center;
+}
+
+.tab {
+  background-color: $secondary;
+  border-left: 1px solid darken($secondary, 30);
+  border-bottom: 1px solid darken($secondary, 30);
+}
+
+.alert-banner {
+  @include flex($wrap: nowrap);
+  align-items: center;
+  width: 97%;
+  margin: .5rem auto;
+  background-color: $main;
+  padding: .5rem;
+  border-radius: 5px;
+
+  p,
+  strong {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: white;
+  } 
+}
+
+.alert-banner-close {
+  margin-left: auto;
+  width: 50px;
+  text-align: center;
+  font-weight: 700;
+}
+
+
+/*
+  * -------
+  * Charts 
+  * -------
+*/
+
+section {
+  max-width: 100%;
+  padding: 1rem;
+  border-bottom: 1px solid darken($secondary, 30);
+}
+
+.widget-container-full,
+.widget-container-half {
+  width: 90vw;
+  margin: auto;
+}
+
+.widget-container-half {
+  margin-top: .5rem;
+}
+
+
+/* 
+  ? Traffic Chart 
+*/
+.traffic {
+  transition: .2s ease-out;
+}
+
+.traffic-header {
+  @include flex($dir: column)
+
+}
+
+.traffic-nav {
+  @include flex($wrap: nowrap, $just: space-around);
+  align-items: center;
+
+  padding-inline-start: 0;
+  list-style: none;
+  
+  li {
+    margin: 0 .35rem;
+  }
+}
+
+// Social Status containers
+
+.social-container {
+  @include flex($wrap: nowrap);
+
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: darken($secondary, 4);
+  border-radius: 5px;
+  flex-grow: 1;
+
+  .social-image {
+    background-color: $main;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    
+    @include flex($just: center);
+    align-items: center;
+
+    svg {
+      width: 60%;
+      fill: $white;
+    }
+  }
+
+  .social-text {
+    padding: 0 5px 0 1rem;
+    
+    p {
+      margin: 0;
+      color: $main;
+
+      &:first-of-type {
+        font-weight: 600;
+      }
+
+      &:not(:first-of-type) {
+        font-size: 1.8rem;
+        color: darken($secondary, 55);
+      }
+    }
+  }
+}
+
+// members container
+.members-container {
+  @include flex($dir: column, $just: center);
+  align-items: center;
+
+  width: 95%;
+  margin: 1vh auto;
+  padding: 1rem 0;
+  
+  &:not(.remove-border) {
+    border-bottom: 1px solid darken($secondary, 35);
+  }
+}
+
+.profile-image {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.members-text {
+  text-align: center;
+
+  p {
+    margin: 0;
+    font-size: 17px;
+  }
+}
+
+.date {
+  margin: 0;
+}
+
+
+// Media Queries for Containers
+@include mq-width('tablet', min) {
+  .widget-container-full {
+    width: 85vw;
+  }
+  .widget-container-half {
+    width: 40vw;
+  }
+
+  .traffic-header {
+    @include flex($dir: row, $wrap: nowrap, $just: space-between);
+  }
+
+  //members
+  .members-container {
+    @include flex($dir: row, $wrap: nowrap);
+  
+    width: 95%;
+    margin: 1vh auto;
+    padding: 1rem 0;
+    
+  }
+
+  .members-text {
+    padding-left: .75rem;
+    
+    p, a {
+      text-align: left;
+    }
+  }
+
+  .date,
+  .arrow_icon {
+    margin-left: auto;
+    padding: 0 0 0 .25rem;
+  }
+}

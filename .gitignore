@@ -1,0 +1,12 @@
+# exclude everything except
+/*
+!/css
+!/images
+!/js
+!/scss
+!/svgs
+!.gitignore
+!.gitattributes
+!index.html
+!package-lock.json
+!package.json
