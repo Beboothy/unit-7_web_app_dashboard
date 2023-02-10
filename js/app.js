@@ -270,34 +270,52 @@ let mobileChart = new Chart(mobileCanvas, {
   * -----------------
 */
 const newMemberSection = document.getElementById('newMembers');
+const memberActivitySection = document.getElementById('recentActivity');
 
 const memberData = [
   {
     member: 0,
     name: 'Victoria Chambers',
     email: 'victoria.chambers80@example.com',
-    dateJoined: '10/15/20'
+    dateJoined: '10/15/20',
+    recentActivity: {
+      text: "commented on WebApp's SEO Tips",
+      time: "4 hours ago"
+    }
   },
   {
     member: 1,
     name: 'Dale Byrd',
     email: 'dale.byrd52@example.com',
-    dateJoined: '10/15/20'
+    dateJoined: '10/15/20',
+    recentActivity: {
+      text: "liked the post Facebook's Changes for 2021",
+      time: "5 hours ago"
+    }
   },
   {
     member: 2,
     name: 'Dawn Wood',
     email: 'dawn.wood16@example.com',
-    dateJoined: '10/15/20'
+    dateJoined: '10/15/20',
+    recentActivity: {
+      text: "commented on Facebook's Changes for 2021",
+      time: "5 hours ago"
+    }
   },
   {
     member: 3,
     name: 'Dan Oliver',
     email: 'dan.oliver@example.com',
-    dateJoined: '10/15/20'
+    dateJoined: '10/15/20',
+    recentActivity: {
+      text: "posted WebApp's SEO Tips",
+      time: "1 hour ago"
+    }
   }
 ]
 
+// new members loop
 for(let i = 0; i < memberData.length; i++ ) {
   let member = memberData[i];
   
@@ -339,6 +357,50 @@ for(let i = 0; i < memberData.length; i++ ) {
   memberContainer.appendChild(memberImage);
   memberContainer.appendChild(memberText);
   memberContainer.appendChild(memberJoin);
+}
+
+//recent activity loop
+for(let i = 0; i < memberData.length; i++ ) {
+  let member = memberData[i];
+  
+  let memberContainer = document.createElement('div');
+  memberContainer.className = "members-container";
+  
+  let memberImage = document.createElement('img');
+  memberImage.className = 'profile-image';
+  // parcel (using for chart.js) does not work will with JS image sources. 
+  // This is the work around
+  if(memberData[i].member === 0) {
+    memberImage.src = require("../images/member-0.jpg");
+  } else if (memberData[i].member === 1) {
+    memberImage.src = require("../images/member-1.jpg");
+  } else if (memberData[i].member === 2) {
+    memberImage.src = require("../images/member-2.jpg");
+  } else {
+    memberImage.src = require("../images/member-3.jpg");
+    memberContainer.classList.add('remove-border');
+  }
+
+  let memberText = document.createElement('div');
+  memberText.className = "members-text";
+
+  let memberActivity = document.createElement('p');
+  memberActivity.textContent = member.name + ' ' + member.recentActivity.text;
+  let memberActivityTime = document.createElement('div');
+  memberActivityTime.className = 'activity_time';
+  memberActivityTime.textContent = member.recentActivity.time;
+  memberText.appendChild(memberActivity);
+  memberText.appendChild(memberActivityTime);
+
+  let moreDetailsButton = document.createElement('button');
+  moreDetailsButton.className = 'arrow_icon';
+  moreDetailsButton.textContent = '>';
+
+  memberActivitySection.appendChild(memberContainer);
+  memberContainer.appendChild(memberImage);
+  memberContainer.appendChild(memberText);
+  memberContainer.appendChild(moreDetailsButton);
+
 }
 
 

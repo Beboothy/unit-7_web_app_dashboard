@@ -167,7 +167,7 @@ section {
 .members-text {
   text-align: center;
 
-  p {
+  p, a {
     margin: 0;
     font-size: 17px;
   }
@@ -177,8 +177,54 @@ section {
   margin: 0;
 }
 
+.activity_time {
+  font-size: 14px;
+  margin: .25rem 0;
+}
+
+.arrow_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline-color: 1px solid $main;
+  outline-offset: 1px;
+  background-color: transparent;
+
+  font-size: 25px;
+}
+
+// Message containers
+.widget-container {
+  @include flex($dir: column);
+  padding: 1rem 0;
+}
+
+.message {
+  input, textarea {
+    margin: 0 0 1rem;
+    padding: .5rem;
+  }
+
+  input,
+  button {
+    min-height: 50px;
+  }
+
+  textarea {
+    min-height: 200px;
+  }
+}
 
 // Media Queries for Containers
+@include mq-width('tablet', max) {
+  .arrow_icon {
+    display: none;
+  }
+}
+
 @include mq-width('tablet', min) {
   .widget-container-full {
     width: 85vw;
@@ -198,13 +244,12 @@ section {
     width: 95%;
     margin: 1vh auto;
     padding: 1rem 0;
-    
   }
 
   .members-text {
     padding-left: .75rem;
     
-    p, a {
+    p, a, .activity_time {
       text-align: left;
     }
   }
@@ -213,5 +258,11 @@ section {
   .arrow_icon {
     margin-left: auto;
     padding: 0 0 0 .25rem;
+  }
+}
+
+@include mq-width('desktop', min) {
+  .members-container {
+    min-height: 125px;
   }
 }

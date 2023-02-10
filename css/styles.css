@@ -8630,6 +8630,10 @@ nav {
   width: 2rem;
 }
 
+canvas {
+  display: inline-block;
+}
+
 /* ============================================= */
 /*              Grid System                      */
 /* ============================================= */
@@ -8886,7 +8890,7 @@ section {
 .members-text {
   text-align: center;
 }
-.members-text p {
+.members-text p, .members-text a {
   margin: 0;
   font-size: 17px;
 }
@@ -8895,6 +8899,47 @@ section {
   margin: 0;
 }
 
+.activity_time {
+  font-size: 14px;
+  margin: 0.25rem 0;
+}
+
+.arrow_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline-color: 1px solid #7578BF;
+  outline-offset: 1px;
+  background-color: transparent;
+  font-size: 25px;
+}
+
+.widget-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.message input, .message textarea {
+  margin: 0 0 1rem;
+  padding: 0.5rem;
+}
+.message input,
+.message button {
+  min-height: 50px;
+}
+.message textarea {
+  min-height: 200px;
+}
+
+@media only screen and (max-width: 767px) {
+  .arrow_icon {
+    display: none;
+  }
+}
 @media only screen and (min-width: 768px) {
   .widget-container-full {
     width: 85vw;
@@ -8919,13 +8964,18 @@ section {
   .members-text {
     padding-left: 0.75rem;
   }
-  .members-text p, .members-text a {
+  .members-text p, .members-text a, .members-text .activity_time {
     text-align: left;
   }
   .date,
   .arrow_icon {
     margin-left: auto;
     padding: 0 0 0 0.25rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .members-container {
+    min-height: 125px;
   }
 }
 
