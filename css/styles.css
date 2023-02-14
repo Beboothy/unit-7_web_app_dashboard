@@ -8634,6 +8634,10 @@ canvas {
   display: inline-block;
 }
 
+.profile-image {
+  filter: drop-shadow(1px 1px 2px #222);
+}
+
 /* ============================================= */
 /*              Grid System                      */
 /* ============================================= */
@@ -8924,15 +8928,37 @@ section {
 }
 
 .message input, .message textarea {
-  margin: 0 0 1rem;
   padding: 0.5rem;
 }
 .message input,
 .message button {
   min-height: 50px;
 }
+.message input {
+  position: relative;
+}
 .message textarea {
   min-height: 200px;
+  margin: 1rem 0;
+}
+
+#userMessageList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#userMessageList li {
+  border: 1px solid #7578BF;
+  margin-top: -1px;
+  background-color: #F2F2F2;
+  padding: 0.75rem;
+  text-decoration: none;
+  color: black;
+  transition: 0.2s ease;
+}
+#userMessageList li:hover, #userMessageList li:focus {
+  background-color: #7578BF;
+  color: white;
 }
 
 @media only screen and (max-width: 767px) {

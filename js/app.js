@@ -403,11 +403,74 @@ for(let i = 0; i < memberData.length; i++ ) {
 
 }
 
-
 // Messaging Section
 const user = document.getElementById("userField");
 const message = document.getElementById("messageField");
 const send = document.getElementById("send");
+
+// prototype to append after a sibling
+// https://stackoverflow.com/questions/4793604/how-to-insert-an-element-after-another-element-in-javascript-without-using-a-lib
+Element.prototype.appendAfter = function (element) {
+  element.parentNode.insertBefore(this, element.nextSibling);
+},false;
+
+const autocompleteUl = document.createElement('ul');
+autocompleteUl.id = 'userMessageList';
+autocompleteUl.appendAfter(user);
+
+function makeUserList(data) {
+  for (i = 0; i < data.length; i++) {
+    let html = `
+        <li class="auto-li" tabindex="0">${data[i].name}</li>
+    `;
+    autocompleteUl.insertAdjacentHTML('afterbegin', html);
+  };
+}
+
+function filterUsers() {
+  let filter = user.value.toLowerCase();
+  li = autocompleteUl.children;
+
+  for (i = 0; i < li.length; i ++ ) {
+    let textValue = li[i].textContent || li[i].innerText;
+    if (textValue.toLowerCase().indexOf(filter) > -1) {
+      li[i].style.display = '';
+    } else {
+      li[i].style.display = 'none';
+    }
+  }
+}
+
+user.addEventListener('input', () => {
+  if (autocompleteUl.children.length === 0) {    
+    // make user message list
+    makeUserList(memberData);
+  };
+  filterUsers();
+});
+
+// Autocomplete listeners on keyboard focus
+document.addEventListener('click', (e) => {
+  if(e.target.className === 'auto-li') {
+    user.value = e.target.textContent;
+    li = autocompleteUl.children;
+
+    for(i = 0; li.length; i ++) {
+      li[i].style.display = "none";
+    }
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter' && e.target.className === 'auto-li') {
+    user.value = e.target.textContent;
+    li = autocompleteUl.children;
+
+    for(i = 0; li.length; i ++) {
+      li[i].style.display = "none";
+    }
+  }
+});
 
 send.addEventListener('click', () => {
   
