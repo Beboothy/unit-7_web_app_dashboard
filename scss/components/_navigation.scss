@@ -3,21 +3,11 @@
 /* ============================================= */
 
 nav {
-  @include flex($dir: row, $wrap: nowrap, $just: center);
   background-color: $tertiary;
 }
 
-#HomeLink {
-  // background-image: url(../svgs/home.svg);
-}
-#ChartLink {
-  // background-image: url(../svgs/bar-chart.svg)
-}
-#MemberLink {
-  // background-image: url(../svgs/members.svg)
-}
-#SettingsLink {
-  // background-image: url(../svgs/settings.svg)
+.nav_flex {
+  @include flex($dir: row, $wrap: nowrap, $just: center);
 }
 
 .nav_link {
@@ -28,8 +18,15 @@ nav {
   fill: white;
 }
 
+@include mq-width('tablet', max) {
+  .nav_flex {
+    max-width: 450px;
+    margin-inline: auto;
+  }
+}
+
 @include mq-width('tablet', min) {
-  nav {
+  .nav_flex {
     @include flex($dir: column, $just: flex-start);
   }
 }

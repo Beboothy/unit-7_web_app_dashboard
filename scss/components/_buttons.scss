@@ -6,7 +6,7 @@
   width: 100%;
   color: $white;
   border: none;
-  padding: calc($spacer * .75) 0;
+  padding: calc($spacer * 1.25) 0;
   transition: all .2s ease;
   border-radius: 5px;
 
@@ -39,7 +39,7 @@
     -webkit-appearance: none;
     position: relative;
     width: 100px;
-    height: 30px;
+    height: 40px;
     border-radius: 25px;
     background-color: #ccc;
     transition: background .3s;

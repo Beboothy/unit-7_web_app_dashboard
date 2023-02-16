@@ -6,13 +6,14 @@ header {
 }
 
 h1 {
+  position: relative;
   margin-right: auto;
 }
 
 #bell {
   @include flex($just: center);
   align-items: center;
-  min-width: 100px;
+  min-width: 80px;
   border-right: 1px solid #cccccc;
   height: 100%;
   fill: white;
@@ -27,8 +28,8 @@ h1 {
       height: 10px;
       border-radius: 50%;
       background-color: $accent;
-      top: 10%;
-      right: 25%;
+      top: 15%;
+      right: 30%;
       z-index: 2;
     }
   }
@@ -98,6 +99,10 @@ dialog {
 .time {
   font-size: 16px;
   border-bottom: 1px dashed $main;
+}
+
+.student_name {
+  color:white;
 }
 
 .headline {
@@ -187,18 +192,20 @@ section {
 
 .social-container {
   @include flex($wrap: nowrap);
+  align-items: center;
 
   padding: 1rem;
   margin: 1rem 0;
-  background-color: darken($secondary, 4);
+  background-color: $secondary;
+  border: 2px solid lighten($grey, 50);
   border-radius: 5px;
   flex-grow: 1;
 
   .social-image {
     background-color: $main;
     border-radius: 50%;
-    width: 70px;
-    height: 70px;
+    width: 110px;
+    height: 110px;
     
     @include flex($just: center);
     align-items: center;
@@ -217,11 +224,12 @@ section {
       color: $main;
 
       &:first-of-type {
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 1.6rem;
       }
 
       &:not(:first-of-type) {
-        font-size: 1.8rem;
+        font-size: 3.8rem;
         color: darken($secondary, 55);
       }
     }
@@ -243,9 +251,10 @@ section {
 }
 
 .profile-image {
-  width: 55px;
-  height: 55px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
+  margin-bottom: .75rem;
 }
 
 .members-text {
@@ -255,6 +264,22 @@ section {
     margin: 0;
     font-size: 17px;
   }
+
+  a {
+    color: $main;
+    font-weight: 500;
+  }
+
+  span {
+    font-weight: 600;
+  }
+}
+
+.members-text a,
+.members-text p,
+.date,
+.activity_time {
+  line-height: .5;
 }
 
 .date {
@@ -262,7 +287,7 @@ section {
 }
 
 .activity_time {
-  font-size: 14px;
+  font-size: 16px;
   margin: .25rem 0;
 }
 
@@ -291,6 +316,11 @@ section {
     padding: .5rem;
     background-color: $secondary;
     border-radius: 5px;
+    border: 2px solid lighten($grey, 60);
+
+    &::placeholder {
+      opacity: .3;
+    }
   }
 
   input,
@@ -301,7 +331,6 @@ section {
   input {
     position: relative;
     outline: none;
-    border: 1px solid rgb(118, 118, 118);
   }
 
   textarea {
@@ -344,13 +373,44 @@ section {
   // input in buttons
 }
 
+.select_wrapper {
+  position: relative;
+  
+
+  .caret {
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    z-index: 2;
+    transition: all .2s ease-in-out;
+
+    i {
+      font-size: 2rem;
+      filter: drop-shadow(1px 1px 2px $grey);
+    } 
+  }
+
+  &:hover {
+    .caret {
+      transform: translateY(-2px) scale(1.1);
+    }
+  }
+}
+
 .form-field {
+  position: relative;
   margin: 1vh 0 0;
   min-height: 50px;
+  width: 100%;
   background-color: $secondary;
-  padding: 0 .5rem;
-  color: #222;
+  border: 2px solid lighten($grey, 60);
+  padding: 1.25rem .5rem;
+  color: $grey;
   border-radius: 5px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .settings-button {
@@ -384,6 +444,29 @@ section {
     @include flex($dir: row, $wrap: nowrap, $just: space-between);
   }
 
+  .social-container {
+    padding: .5rem;
+
+    .social-image {
+      width: 85px;
+      height: 85px;
+    }
+
+    .social-text {
+      padding: 0 5px 0 1rem;
+      
+      p {  
+        &:first-of-type {
+          font-size: .9rem;
+        }
+  
+        &:not(:first-of-type) {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+
   //members
   .members-container {
     @include flex($dir: row, $wrap: nowrap);
@@ -401,6 +484,10 @@ section {
     }
   }
 
+  #send {
+    margin-top: auto;
+  }
+
   .date,
   .arrow_icon {
     margin-left: auto;
@@ -409,11 +496,33 @@ section {
 }
 
 @include mq-width('desktop', min) {
+  .social-container {
+    padding: 1rem;
+
+    .social-image {
+      width: 110px;
+      height: 110px;
+    }
+
+    .social-text {
+      p {  
+        &:first-of-type {
+          font-size: 1.3rem;
+        }
+  
+        &:not(:first-of-type) {
+          font-size: 2.6rem;
+        }
+      }
+    }
+  }
+
   .members-container {
     min-height: 125px;
   }
 
-  #Settings {
+  #Settings,
+  .message {
     @include flex($dir: column);
 
     .widget-container {

@@ -354,7 +354,8 @@ const memberData = [
     email: 'victoria.chambers80@example.com',
     dateJoined: '10/15/20',
     recentActivity: {
-      text: "commented on WebApp's SEO Tips",
+      action: "commented on ",
+      text: "WebApp's SEO Tips",
       time: "4 hours ago"
     }
   },
@@ -364,7 +365,8 @@ const memberData = [
     email: 'dale.byrd52@example.com',
     dateJoined: '10/15/20',
     recentActivity: {
-      text: "liked the post Facebook's Changes for 2021",
+      action: "liked the post ",
+      text: "Facebook's Changes for 2021",
       time: "5 hours ago"
     }
   },
@@ -374,7 +376,8 @@ const memberData = [
     email: 'dawn.wood16@example.com',
     dateJoined: '10/15/20',
     recentActivity: {
-      text: "commented on Facebook's Changes for 2021",
+      action: "commented on ",
+      text: "Facebook's Changes for 2021",
       time: "5 hours ago"
     }
   },
@@ -384,7 +387,8 @@ const memberData = [
     email: 'dan.oliver@example.com',
     dateJoined: '10/15/20',
     recentActivity: {
-      text: "posted WebApp's SEO Tips",
+      action: "posted ",
+      text: "WebApp's SEO Tips",
       time: "1 hour ago"
     }
   }
@@ -460,7 +464,9 @@ for(let i = 0; i < memberData.length; i++ ) {
   memberText.className = "members-text";
 
   let memberActivity = document.createElement('p');
-  memberActivity.textContent = member.name + ' ' + member.recentActivity.text;
+  memberActivity.innerHTML = `
+    ${member.name} ${member.recentActivity.action} <span>${member.recentActivity.text}</span>
+  `;
   let memberActivityTime = document.createElement('div');
   memberActivityTime.className = 'activity_time';
   memberActivityTime.textContent = member.recentActivity.time;
@@ -506,12 +512,14 @@ function filterUsers() {
   let filter = user.value.toLowerCase();
   li = autocompleteUl.children;
 
-  for (i = 0; i < li.length; i ++ ) {
-    let textValue = li[i].textContent || li[i].innerText;
-    if (textValue.toLowerCase().indexOf(filter) > -1) {
-      li[i].style.display = '';
-    } else {
-      li[i].style.display = 'none';
+  if(li.length !== 0) {
+    for (i = 0; i < li.length; i ++ ) {
+      let textValue = li[i].textContent || li[i].innerText;
+      if (textValue.toLowerCase().indexOf(filter) > -1) {
+        li[i].style.display = '';
+      } else {
+        li[i].style.display = 'none';
+      }
     }
   }
 }

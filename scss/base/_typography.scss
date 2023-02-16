@@ -10,14 +10,14 @@
   box-sizing: border-box;
 }
 
-h1 { font-size: 1.5rem; }
+h1, h1 span { font-size: 1.5rem; }
 h2 { font-size: 1.2rem; }
-h3 { font-size: 1.15rem; margin: 0; }
+h3 { font-size: 1.15rem; margin: 0; text-transform: uppercase; }
 h4 { font-size: 1.1rem; }
 h5 { font-size: 1rem; }
 
 @include mq-width('small-tablet', min) {
-  h1 { font-size: 1.8rem; margin-top: 0 }
+  h1, h1 span { font-size: 1.8rem; margin-top: 0 }
 }
 
 a {
