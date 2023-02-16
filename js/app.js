@@ -250,6 +250,7 @@ for(i=0; i<trafficWidgets.length; i++) {
 
 document.addEventListener('click', (e) => {
   if(e.target.className === "traffic-nav-link") {
+    console.log('listening');
     const navLinks = document.getElementsByClassName("traffic-nav-link");
     const navValue = e.target.innerHTML.toLowerCase();
 

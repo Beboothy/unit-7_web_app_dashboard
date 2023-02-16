@@ -8718,6 +8718,7 @@ nav {
 .traffic-nav-link {
   border-radius: 1rem;
   padding: 0.25rem 0.5rem;
+  font-weight: 600;
 }
 .traffic-nav-link.active {
   background-color: #3EB489;
