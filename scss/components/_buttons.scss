@@ -24,6 +24,10 @@
   }
 }
 
+.arrow_icon {
+  color: $main;
+}
+
 .btn {
   @include themes($colors);
   @extend %btn;

@@ -8444,6 +8444,10 @@ a {
   }
 }
 
+.arrow_icon {
+  color: #7578BF;
+}
+
 .btn-main {
   background-color: #7578BF;
 }
@@ -8568,6 +8572,10 @@ a {
   .btn {
     padding: 10px 30px;
   }
+}
+
+.arrow_icon {
+  color: #7578BF;
 }
 
 .btn-main {
