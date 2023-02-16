@@ -8423,11 +8423,12 @@ a {
 /*              Buttons                          */
 /* ============================================= */
 .btn {
-  margin-top: 1rem;
   width: 100%;
   color: white;
   border: none;
   padding: 0.75rem 0;
+  transition: all 0.2s ease;
+  border-radius: 5px;
 }
 .btn:hover {
   color: white;
@@ -8495,17 +8496,65 @@ a {
 }
 .btn-white:hover {
   background-color: white;
+}
+
+.button-primary {
+  background-color: #7578BF;
+}
+
+#Settings input {
+  -webkit-appearance: none;
+  position: relative;
+  width: 100px;
+  height: 30px;
+  border-radius: 25px;
+  background-color: #ccc;
+  transition: background 0.3s;
+  outline: 2px solid lightgrey;
+  cursor: pointer;
+}
+#Settings input::before {
+  content: "OFF";
+  font-size: 16px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+#Settings input::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid lightgrey;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: white;
+  transition: left 0.3s;
+}
+#Settings input:checked {
+  background-color: #7578BF;
+}
+#Settings input:checked::before {
+  content: "ON";
+}
+#Settings input:checked::after {
+  left: 85%;
 }
 
 /* ============================================= */
 /*              Buttons                          */
 /* ============================================= */
 .btn {
-  margin-top: 1rem;
   width: 100%;
   color: white;
   border: none;
   padding: 0.75rem 0;
+  transition: all 0.2s ease;
+  border-radius: 5px;
 }
 .btn:hover {
   color: white;
@@ -8573,6 +8622,53 @@ a {
 }
 .btn-white:hover {
   background-color: white;
+}
+
+.button-primary {
+  background-color: #7578BF;
+}
+
+#Settings input {
+  -webkit-appearance: none;
+  position: relative;
+  width: 100px;
+  height: 30px;
+  border-radius: 25px;
+  background-color: #ccc;
+  transition: background 0.3s;
+  outline: 2px solid lightgrey;
+  cursor: pointer;
+}
+#Settings input::before {
+  content: "OFF";
+  font-size: 16px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+#Settings input::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid lightgrey;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: white;
+  transition: left 0.3s;
+}
+#Settings input:checked {
+  background-color: #7578BF;
+}
+#Settings input:checked::before {
+  content: "ON";
+}
+#Settings input:checked::after {
+  left: 85%;
 }
 
 /* ============================================= */
@@ -8752,7 +8848,79 @@ h1 {
   justify-content: center;
   align-items: center;
   min-width: 100px;
-  border-right: 1px solid #3f4545;
+  border-right: 1px solid #cccccc;
+  height: 100%;
+  fill: white;
+}
+#bell.alert {
+  position: relative;
+}
+#bell.alert::before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #81C98F;
+  top: 10%;
+  right: 25%;
+  z-index: 2;
+}
+#bell:hover svg {
+  transition: all 0.2s ease;
+  fill: #81C98F;
+  transform: scale(1.05);
+  filter: drop-shadow(1px 1px 2px #222);
+}
+
+dialog {
+  max-width: 650px;
+  padding: 1rem;
+}
+dialog::backdrop {
+  background-color: rgba(117, 120, 191, 0.9);
+}
+
+.notification {
+  position: relative;
+  margin: 1vh auto;
+  padding: 0.5rem 1rem;
+  border: 1px solid #7578BF;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.remove {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background-color: #7578BF;
+  border-radius: 5px;
+  color: white;
+  border: none;
+}
+.remove:hover, .remove:focus {
+  background-color: #31336a;
+}
+
+.from,
+.time {
+  margin: 0;
+}
+
+.from {
+  font-weight: 600;
+}
+
+.time {
+  font-size: 16px;
+  border-bottom: 1px dashed #7578BF;
 }
 
 .headline {
@@ -8929,6 +9097,8 @@ section {
 
 .message input, .message textarea {
   padding: 0.5rem;
+  background-color: #F2F2F2;
+  border-radius: 5px;
 }
 .message input,
 .message button {
@@ -8936,6 +9106,8 @@ section {
 }
 .message input {
   position: relative;
+  outline: none;
+  border: 1px solid rgb(118, 118, 118);
 }
 .message textarea {
   min-height: 200px;
@@ -8959,6 +9131,35 @@ section {
 #userMessageList li:hover, #userMessageList li:focus {
   background-color: #7578BF;
   color: white;
+}
+
+.setting {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0.5rem 0;
+  max-width: 400px;
+}
+.setting p {
+  margin: 0 auto 0 0;
+}
+
+.form-field {
+  margin: 1vh 0 0;
+  min-height: 50px;
+  background-color: #F2F2F2;
+  padding: 0 0.5rem;
+  color: #222;
+  border-radius: 5px;
+}
+
+.settings-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.settings-button button {
+  width: 48% !important;
 }
 
 @media only screen and (max-width: 767px) {
@@ -9002,6 +9203,19 @@ section {
 @media only screen and (min-width: 1024px) {
   .members-container {
     min-height: 125px;
+  }
+  #Settings {
+    display: flex;
+    flex-direction: column;
+  }
+  #Settings .widget-container {
+    height: 100%;
+  }
+  #Settings .setting {
+    margin: 2rem 0;
+  }
+  #Settings .form-field {
+    margin-top: auto;
   }
 }
 

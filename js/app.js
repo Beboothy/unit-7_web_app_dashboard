@@ -1,5 +1,10 @@
 import Chart from 'chart.js/auto'
 
+const bell = document.getElementById('bell');
+const modal = document.getElementById('modal');
+const notificationContainer = document.getElementById('notifications');
+const closeBtn = document.getElementById('closeDialogue');
+
 const alertBanner = document.getElementById('alert');
 const dailyCanvas = document.getElementById('daily-chart');
 const mobileCanvas = document.getElementById('mobile-users');
@@ -11,6 +16,75 @@ const trafficDailyCanvas = document.getElementById('traffic-chart-daily').getCon
 const trafficWeeklyCanvas = document.getElementById('traffic-chart-weekly').getContext('2d');
 const trafficMonthlyCanvas = document.getElementById('traffic-chart-monthly').getContext('2d');
 
+// notifications bell
+bell.classList.add('alert');
+
+const newNotificationData = [
+  {
+    from: 'Dan Oliver',
+    time: '23 minutes ago',
+    message: 'Hey! Got a second to chat about a new push notification animation?'
+  },
+  {
+    from: 'Dawn Wood',
+    time: '2 days ago',
+    message: "There must be some spam bots going around. I keep getting phishing emails about someone using my login credentials."
+  }
+];
+
+function createNotifications(arr) {
+  for(i=0; i<arr.length; i++) {
+    let container = document.createElement('div');
+    container.className = 'notification';
+    let removeNotification = document.createElement('button');
+    removeNotification.textContent = 'X';
+    removeNotification.className = 'remove';
+
+    let from = document.createElement('p');
+    from.className = 'from';
+    let time = document.createElement('p');
+    time.className = 'time';
+    let message = document.createElement('p');
+
+    from.textContent = arr[i].from;
+    time.textContent = arr[i].time;
+    message.textContent = arr[i].message;
+
+    container.appendChild(removeNotification);
+    container.appendChild(from);
+    container.appendChild(time);
+    container.appendChild(message);
+
+    notificationContainer.appendChild(container);
+  }
+}
+
+createNotifications(newNotificationData);
+
+bell.addEventListener(('click'), e => {
+  if(bell.className === 'alert') {
+    bell.classList.remove('alert');
+    alertBanner.style.display = "none";
+  };
+
+  if(notificationContainer.children.length === 0) {
+    notificationContainer.innerHTML = `
+      <p>No new notifications!</p>
+    ` 
+  }
+
+  modal.showModal();
+});
+
+closeBtn.addEventListener(('click'), e => {
+  modal.close();
+});
+
+document.addEventListener(('click'), e => {
+  if(e.target.className === 'remove') {
+    e.target.parentNode.remove();
+  };
+});
 
 // create html for the banner
 alertBanner.innerHTML =
@@ -28,6 +102,7 @@ alertBanner.addEventListener('click', e => {
     alertBanner.style.display = "none"
   }
 });
+
 
 // Establishing Charts
 /*
@@ -485,3 +560,65 @@ send.addEventListener('click', () => {
     alert(`Message successfully send to: ${user.value}`);
   }
 });
+
+// Event listener for Local Storage
+const emailSetting = document.getElementById('EmailSetting');
+const publicSetting = document.getElementById('PublicSetting');
+const timezoneSetting = document.getElementById('timezone');
+const save = document.getElementById('save');
+const cancel = document.getElementById('cancel');
+
+function getLocalSettings() {
+  let storage = localStorage.getItem('currentSettings');
+  if( storage === null) {
+    return;
+  } else {
+    console.log(JSON.parse(storage));
+    return JSON.parse(storage);
+  }
+};
+
+function localSettingsStart() {
+  let localSettings = getLocalSettings();
+  if (localSettings === undefined) {
+    return;
+  };
+  
+  if(localSettings[0] === 'on') {
+    emailSetting.checked = true;
+  };
+  if(localSettings[1] === 'on') {
+    publicSetting.checked = true;
+  };
+  timezoneSetting.value = localSettings[2];
+}
+
+localSettingsStart();
+
+save.addEventListener('click', () => {
+  let currentEmailSetting = '';
+  if (emailSetting.checked) {
+    currentEmailSetting = 'on'
+  } else { currentEmailSetting = 'off' };
+
+  let currentPublicSetting = '';
+  if (publicSetting.checked) {
+    currentPublicSetting = 'on'
+  } else { currentPublicSetting = 'off' };
+
+  let currentSettingArray = [
+    currentEmailSetting, currentPublicSetting, timezoneSetting.value
+  ];
+
+  localStorage.setItem('currentSettings', JSON.stringify(currentSettingArray));
+  console.log(currentSettingArray);
+});
+
+cancel.addEventListener('click', () => {
+  localStorage.clear('currentSettings');
+  emailSetting.checked = false;
+  publicSetting.checked = false;
+  timezoneSetting.selectedIndex = 0; 
+});
+
+

@@ -13,7 +13,91 @@ h1 {
   @include flex($just: center);
   align-items: center;
   min-width: 100px;
-  border-right: 1px solid $grey;
+  border-right: 1px solid #cccccc;
+  height: 100%;
+  fill: white;
+
+  &.alert {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $accent;
+      top: 10%;
+      right: 25%;
+      z-index: 2;
+    }
+  }
+
+  &:hover {
+
+    svg {
+      transition: all .2s ease;
+      fill: $accent;
+      transform: scale(1.05);
+      filter: drop-shadow(1px 1px 2px #222);
+    }
+  }
+}
+
+dialog {
+  max-width: 650px;
+  padding: 1rem;
+
+  &::backdrop {
+    background-color: rgba($main, 0.9);
+  }
+}
+
+.notification {
+  position: relative;
+  margin: 1vh auto;
+  padding: .5rem 1rem;
+
+  border: 1px solid $main;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.remove {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 20px;
+  background-color: $main;
+  border-radius: 5px;
+  color: white;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background-color: darken($main, 30);
+  }
+}
+
+.from,
+.time {
+  margin: 0;
+}
+
+.from {
+  font-weight: 600;
+}
+
+.time {
+  font-size: 16px;
+  border-bottom: 1px dashed $main;
 }
 
 .headline {
@@ -205,6 +289,8 @@ section {
 .message {
   input, textarea {
     padding: .5rem;
+    background-color: $secondary;
+    border-radius: 5px;
   }
 
   input,
@@ -214,6 +300,8 @@ section {
 
   input {
     position: relative;
+    outline: none;
+    border: 1px solid rgb(118, 118, 118);
   }
 
   textarea {
@@ -241,6 +329,39 @@ section {
       background-color: $main;
       color: white;
     }
+  }
+}
+
+.setting {
+  @include flex($wrap: nowrap);
+  margin: .5rem 0;
+  max-width: 400px;
+
+  p {
+    margin: 0 auto 0 0;
+  }
+
+  // input in buttons
+}
+
+.form-field {
+  margin: 1vh 0 0;
+  min-height: 50px;
+  background-color: $secondary;
+  padding: 0 .5rem;
+  color: #222;
+  border-radius: 5px;
+}
+
+.settings-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 1rem;
+
+  button {
+    width: 48% !important;
   }
 }
 
@@ -290,5 +411,21 @@ section {
 @include mq-width('desktop', min) {
   .members-container {
     min-height: 125px;
+  }
+
+  #Settings {
+    @include flex($dir: column);
+
+    .widget-container {
+      height: 100%;
+    }
+
+    .setting {
+      margin: 2rem 0;
+    }
+
+    .form-field {
+      margin-top: auto;
+    }
   }
 }

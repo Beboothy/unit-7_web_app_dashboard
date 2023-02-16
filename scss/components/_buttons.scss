@@ -3,11 +3,12 @@
 /* ============================================= */
 
 %btn {
-  margin-top: $spacer;
   width: 100%;
   color: $white;
   border: none;
   padding: calc($spacer * .75) 0;
+  transition: all .2s ease;
+  border-radius: 5px;
 
   &:hover {
     color: $white;
@@ -26,4 +27,59 @@
 .btn {
   @include themes($colors);
   @extend %btn;
+}
+
+.button-primary {
+  background-color: $main;
+}
+
+
+#Settings {
+  input {
+    -webkit-appearance: none;
+    position: relative;
+    width: 100px;
+    height: 30px;
+    border-radius: 25px;
+    background-color: #ccc;
+    transition: background .3s;
+    outline: 2px solid lightgrey;
+    cursor: pointer;
+
+    &::before {
+      content: 'OFF';
+      font-size: 16px;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 25%;
+      transform: translate(-50%, -50%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 2px solid lightgrey;
+      height: 1.25rem;
+      width: 1.25rem;
+      background-color: white;
+      transition: left .3s;
+    }
+
+    &:checked {
+      background-color: $main;
+
+      &::before {
+        content: 'ON';
+      }
+
+      &::after {
+        left: 85%;
+      }
+    }
+  }
 }
